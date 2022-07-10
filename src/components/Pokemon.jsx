@@ -14,7 +14,11 @@ const Pokemon = (props) => {
       setPokemonTypes(response.data.types);
       setPokemonArtWork(response.data.sprites.other.home.front_default);
     });
-  }, []);
+  }, [props]);
+
+  // useEffect(() => {
+  //   console.log(pokemonName);
+  // }, [pokemonName]);
 
   return (
     <div>
@@ -23,9 +27,9 @@ const Pokemon = (props) => {
       </div>
       <p>{pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}</p>
       <div className="pokemon-types-container">
-        {pokemonTypes.map((slot) => (
+        {pokemonTypes.map((slot, index) => (
           <PokemonType
-            key={slot.index}
+            key={index}
             pokemonType={slot.type.name}
           />
         ))}
